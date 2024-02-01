@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+
+  .logo {
+    flex: 1;
+  }
+
+  nav > ul {
+    display: flex;
+    gap: 16px;
+  }
+}

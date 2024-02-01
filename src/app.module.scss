@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    flex-basis: 60px;
+  }
+
+  main {
+    flex: 1;
+    padding: 24px 0;
+  }
+}
+
