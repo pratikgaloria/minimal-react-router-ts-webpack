@@ -1,0 +1,45 @@
+@import "../../../../styles/theme.scss";
+
+.lists {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+
+  .item {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 20px 1fr 96px 48px;
+    gap: 12px;
+    width: 100%;
+
+    .quantity {
+      color: $color-grey;
+    }
+
+    .logo {
+      > img {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+      }
+    }
+
+    .sparklines {
+      display: flex;
+    }
+
+    .quote {
+      text-align: right;
+
+      > span {
+        color: $color-green;
+      }
+    }
+    
+    .quote.negative {
+      > span {
+        color: $color-red;
+      }
+    }
+  }
+}

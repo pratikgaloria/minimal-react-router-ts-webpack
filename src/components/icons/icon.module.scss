@@ -1,0 +1,23 @@
+@import "../../styles/theme.scss";
+
+.icon {
+  &-xs {
+    font-size: $icon-xs;
+  }
+
+  &-sm {
+    font-size: $icon-sm;
+  }
+
+  &-md {
+    font-size: $icon-md;
+  }
+
+  &-lg {
+    font-size: $icon-lg;
+  }
+
+  &-xl {
+    font-size: $icon-xl;
+  }
+}

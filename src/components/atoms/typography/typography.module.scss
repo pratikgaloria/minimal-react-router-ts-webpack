@@ -1,0 +1,35 @@
+@import "../../../styles/theme.scss";
+
+.text {
+  &-xs {
+    font-size: $size-xs;
+  }
+
+  &-sm {
+    font-size: $size-sm;
+  }
+
+  &-md {
+    font-size: $size-md;
+  }
+
+  &-lg {
+    font-size: $size-lg;
+  }
+
+  &-xl {
+    font-size: $size-xl;
+  }
+
+  &-light {
+    font-weight: 300;
+  }
+
+  &-normal {
+    font-weight: 400;
+  }
+
+  &-thick {
+    font-weight: 600;
+  }
+}

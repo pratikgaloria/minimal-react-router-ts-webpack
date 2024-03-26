@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 
-import "./global.css";
+import "./styles/normalize.scss";
+import "./styles/global.scss";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement!);

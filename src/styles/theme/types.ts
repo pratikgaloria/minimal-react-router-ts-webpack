@@ -1,0 +1,1 @@
+export type themeSizes = "xs" | "sm" | "md" | "lg" | "xl"

@@ -1,0 +1,21 @@
+@import "../styles/theme.scss";
+
+.page {
+  display: flex;
+  height: 100vh;
+
+  .sidebar {
+    flex-basis: $sidebar-width;
+    height: 100%;
+
+    @include media-mobile {
+      display: none;
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 32px;
+    background-color: #fafafa;
+  }
+}

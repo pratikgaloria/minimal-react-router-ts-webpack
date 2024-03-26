@@ -1,16 +1,21 @@
 import { Outlet } from "react-router-dom";
-import styles from "./app.module.scss";
-import Header from "./components/header/header";
+import Layout from "./layouts/dashboard";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    }
+  }
+});
 
 export default function App() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <Header />
-      </div>
-      <main className={styles.container}>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
         <Outlet />
-      </main>
-    </div>
+      </Layout>
+    </QueryClientProvider>
   );
 }

@@ -1,0 +1,40 @@
+$base: 4px !default;
+
+$size-xs: $base * 2;
+$size-sm: $base * 3;
+$size-md: $base * 4;
+$size-lg: $base * 6;
+$size-xl: $base * 8;
+
+$icon-xs: $base * 4;
+$icon-sm: $base * 6;
+$icon-md: $base * 8;
+$icon-lg: $base * 12;
+$icon-xl: $base * 16;
+
+$bp-mobile: 375px;
+$bp-tablet: 768px;
+$bp-desktop: 1366px;
+
+@mixin media-mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: ($bp-mobile + 1)) and (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin add-opacity($color, $opacity: 0.9) {
+  background: $color;
+  background: rgba($color, $opacity);
+}

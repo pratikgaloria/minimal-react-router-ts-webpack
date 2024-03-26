@@ -1,0 +1,20 @@
+.wrapper {
+  display: grid;
+  gap: 24px;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+  .lists {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

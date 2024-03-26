@@ -1,0 +1,35 @@
+@import "../../styles/theme.scss";
+
+.wrapper {
+  height: 100%;
+  padding: 24px;
+
+  color: white;
+  background-color: $color-primary;
+
+  .logo {
+    display: flex;
+    margin-bottom: 48px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li.item a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+
+      color: white;
+      text-decoration: none;
+    }
+
+    > li.item-active a {
+      background-color: #4338ca;
+      border-radius: 8px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/theme.scss";
+
+.wrapper {
+  padding: 24px;
+  background-color: white;
+  border: 1px solid $color-border;
+
+  .label {
+    color: $color-grey;
+  }
+
+  ul {
+    padding: 0;
+    margin: 12px 0 0;
+    list-style: none;
+
+    > li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid $color-border;
+
+      &:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+  }
+}
