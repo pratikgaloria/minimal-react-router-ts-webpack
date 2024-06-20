@@ -7,7 +7,7 @@ type IconProps = {
   size?: themeSizes;
 };
 
-export default function Icon({ icon, size = "md" }: IconProps) {
+export function Icon({ icon, size = "md" }: IconProps) {
   return (
     <i className={classnames("las", `la-${icon}`, styles[`icon-${size}`])}></i>
   );

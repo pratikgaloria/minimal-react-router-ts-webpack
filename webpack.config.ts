@@ -48,9 +48,33 @@ const config = {
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, "dist"),
+    client: {
+      overlay: false,
     },
+    static: [
+      {
+        directory: path.resolve(__dirname, "dist"),
+      },
+      {
+        directory: path.resolve(__dirname, "assets"),
+        publicPath: '/public',
+      },
+    ],
+    hot: true,
+    historyApiFallback: true,
+    port: 8080,
+    proxy: {
+      '/api': {
+         target: {
+            host: "0.0.0.0",
+            protocol: 'http:',
+            port: 8081
+         },
+         pathRewrite: {
+            '^/api': ''
+         }
+      }
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({

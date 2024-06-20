@@ -1,0 +1,68 @@
+@import "../../../styles/theme.scss";
+
+.alert {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  align-items: flex-start;
+  border-radius: 4px;
+
+  & i {
+    font-size: 20px;
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &-fluid {
+    width: 100%;
+  }
+
+  &-sm {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  &-lg {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  &-success {
+    color: $color-dark-green;
+    background-color: $color-light-green;
+
+    & i {
+      color: $color-dark-green;
+    }
+  }
+
+  &-error {
+    color: $color-dark-red;
+    background-color: $color-light-red;
+
+    & i {
+      color: $color-dark-red;
+    }
+  }
+
+  &-warning {
+    color: $color-dark-yellow;
+    background-color: $color-light-yellow;
+
+    & i {
+      color: $color-dark-yellow;
+    }
+  }
+
+  &-info {
+    color: $color-dark-blue;
+    background-color: $color-light-blue;
+
+    & i {
+      color: $color-dark-blue;
+    }
+  }
+}

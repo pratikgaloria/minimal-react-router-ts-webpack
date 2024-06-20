@@ -1,6 +1,6 @@
-import List from "../../../../components/list/list";
+import { List } from "../../../../components/list/list";
 import styles from "./top-lists.module.scss";
-import useReturns from "../../../../queries/useReturns";
+import useReturns from "../../../../api/queries/useReturns";
 import { TopListItem, TopListItemLoader } from "./top-list-item";
 
 type TopListsProps = {};
@@ -35,32 +35,30 @@ export default function TopLists({}: TopListsProps) {
 
   return (
     <div className={styles.lists}>
-      <List
-        label="Top winners"
-        items={topWinners.map((tw) => (
-          <TopListItem
-            key={tw.symbol}
-            title={tw.symbol}
-            oneDayReturns={tw.oneDayReturns}
-            currency={tw.currency}
-            qty={tw.quantity}
-            change={tw.oneDayReturnsPercent}
-          />
-        ))}
-      />
-      <List
-        label="Top losers"
-        items={topLosers.reverse().map((tw) => (
-          <TopListItem
-            key={tw.symbol}
-            title={tw.symbol}
-            oneDayReturns={tw.oneDayReturns}
-            currency={tw.currency}
-            qty={tw.quantity}
-            change={tw.oneDayReturnsPercent}
-          />
-        ))}
-      />
+      {[
+        {
+          label: "Top Winners",
+          items: topWinners,
+        },
+        {
+          label: "Top Losers",
+          items: topLosers.reverse(),
+        },
+      ].map(({ label, items }) => (
+        <List
+          key={label}
+          label={label}
+          items={items.map((tw) => (
+            <TopListItem
+              key={tw.symbol}
+              title={tw.symbol}
+              oneDayReturns={tw.oneDayReturns}
+              currency={tw.currency}
+              change={tw.oneDayReturnsPercent}
+            />
+          ))}
+        />
+      ))}
     </div>
   );
 }

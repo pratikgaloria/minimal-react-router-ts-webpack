@@ -7,6 +7,7 @@ export type TReturnsSymbol = TInvestment & {
   investmentValue: number;
   currentValue: number;
   totalReturns: number;
+  totalReturnsPercent: number;
   oneDayReturns: number;
   oneDayReturnsPercent: number;
 };
@@ -84,6 +85,7 @@ const calculateReturns = async (
   const currentValue =
     (quote.regularMarketPrice! / conversionRate) * investment.quantity;
   const totalReturns = currentValue - investmentValue;
+  const totalReturnsPercent = ((100 * currentValue) / investmentValue) - 100;
   const previousValue =
     (quote.regularMarketPreviousClose! / conversionRate) * investment.quantity;
   const oneDayReturns = currentValue - previousValue;
@@ -94,6 +96,7 @@ const calculateReturns = async (
     investmentValue,
     currentValue,
     totalReturns,
+    totalReturnsPercent,
     oneDayReturns,
     oneDayReturnsPercent,
   };

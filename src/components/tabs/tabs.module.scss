@@ -1,0 +1,49 @@
+@import "../../styles/theme.scss";
+
+.tab {
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  width: 100%;
+  color: $color-dark-grey;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 60%;
+  }
+
+  &-sm {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  &-md {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  &-lg {
+    padding: 16px 0;
+    font-size: 14px;
+  }
+
+  &-underlined {
+    border-bottom: 1px solid $color-border;
+
+    &.active {
+      font-weight: 600;
+      color: $color-dark-blue;
+      border-bottom-width: 2px;
+      border-bottom-color: $color-primary;
+    }
+  }
+
+  &-pill {
+    &.active {
+      font-weight: 600;
+      background-color: $color-light-blue;
+      color: $color-dark-blue;
+      border-radius: 4px;
+    }
+  }
+}
