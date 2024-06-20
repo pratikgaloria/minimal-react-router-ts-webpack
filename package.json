@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack -w",
+    "dev": "webpack serve",
     "server": "ts-node ./server/index.ts"
   },
   "keywords": [],
@@ -34,7 +34,12 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@tanstack/react-form": "^0.19.5",
     "@tanstack/react-query": "^5.24.1",
+    "@tanstack/react-table": "^8.15.3",
+    "@tanstack/yup-form-adapter": "^0.19.5",
+    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
     "classnames": "^2.5.1",
     "express": "^4.18.2",
     "mongodb": "^6.3.0",
@@ -43,6 +48,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-sparklines": "^1.7.0",
-    "yahoo-finance2": "^2.9.0"
+    "react-ts-tradingview-widgets": "^1.2.5",
+    "yahoo-finance2": "^2.11.3",
+    "yup": "^1.4.0"
   }
 }

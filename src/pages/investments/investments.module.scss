@@ -1,0 +1,79 @@
+@import "../../styles/theme.scss";
+
+.wrapper {
+  display: grid;
+  gap: 24px;
+
+  table {
+    margin: 0;
+    padding: 0;
+    border: 1px solid $color-dark-border;
+    border-radius: 4px;
+
+    thead tr,
+    tbody tr {
+      display: grid;
+      grid-template-columns: 1fr 160px 160px 160px 160px 80px 60px;
+      align-items: center;
+      border-bottom: 1px solid $color-border;
+      text-align: left;
+
+      .numberValue {
+        text-align: right;
+      }
+    }
+
+    thead tr {
+      background-color: #fafafa;
+      border-color: $color-dark-border;
+    }
+
+    thead tr th {
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+
+      & i {
+        color: $color-grey;
+      }
+
+      div.with-filter {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    tbody tr {
+      background-color: white;
+
+      &:hover {
+        background-color: #fafafa;
+
+        td {
+          color: black;
+        }
+      }
+
+      td {
+        padding: 12px;
+        font-size: 14px;
+        color: #777;
+
+        .symbol {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: black;
+
+          > img {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+

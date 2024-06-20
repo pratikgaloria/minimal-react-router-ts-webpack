@@ -2,11 +2,13 @@
 
 .page {
   display: flex;
-  height: 100vh;
+  position: relative;
 
-  .sidebar {
-    flex-basis: $sidebar-width;
-    height: 100%;
+  nav.sidebar {
+    position: fixed;
+    width: $sidebar-width;
+    height: 100vh;
+    background-color: $color-primary;
 
     @include media-mobile {
       display: none;
@@ -17,5 +19,7 @@
     flex: 1;
     padding: 32px;
     background-color: #fafafa;
+    margin-left: $sidebar-width;
+    min-height: calc(100vh - 64px);
   }
 }

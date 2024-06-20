@@ -2,15 +2,11 @@
 
 .wrapper {
   display: flex;
-  padding: 12px;
-  border-bottom: 1px solid $color-border;
+  justify-content: space-between;
+  align-items: center;
 
-  .logo {
-    flex: 1;
-  }
-
-  nav > ul {
+  .actions {
     display: flex;
-    gap: 16px;
+    gap: 12px;
   }
 }

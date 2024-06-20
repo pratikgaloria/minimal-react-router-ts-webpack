@@ -1,0 +1,31 @@
+@import "../../../styles/theme.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  flex: 1;
+
+  .form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .delete {
+      color: $color-grey;
+    }
+
+    .deleting {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+  }
+}

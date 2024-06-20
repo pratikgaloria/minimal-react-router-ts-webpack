@@ -8,15 +8,16 @@
   .item {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 20px 1fr 96px 48px;
+    grid-template-columns: 1fr 96px 48px;
+    align-items: center;
     gap: 12px;
     width: 100%;
 
-    .quantity {
-      color: $color-grey;
-    }
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 4px;
 
-    .logo {
       > img {
         width: 20px;
         height: 20px;

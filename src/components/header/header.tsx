@@ -1,23 +1,17 @@
-import { Link } from "react-router-dom";
+import { Text } from "../atoms/typography/typography";
 import styles from "./header.module.scss";
 
-export default function Header() {
+type HeaderProps = {
+  label: string;
+}
+
+export function Header({ label, children }: React.PropsWithChildren<HeaderProps>) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.logo}>Hello!</div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">App</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/404">Not found!</Link>
-          </li>
-        </ul>
-      </nav>
+      <Text size="xl">{label}</Text>
+      <div className={styles.actions}>
+        {children}
+      </div>
     </div>
   );
 }

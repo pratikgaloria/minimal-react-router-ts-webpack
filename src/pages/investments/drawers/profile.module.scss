@@ -1,0 +1,64 @@
+@import "../../../styles/theme.scss";
+
+.wrapper {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 24px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+      }
+    }
+
+    .navigator {
+      display: flex;
+      gap: 12px;
+    }
+  }
+  .tabs {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .widgets,
+  .fundamentals,
+  .analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .widgets {
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+
+      > div {
+        display: flex;
+        gap: 4px;
+
+        > span:first-of-type {
+          color: $color-dark-grey;
+        }
+
+        span.positive {
+          color: $color-green;
+        }
+        span.negative {
+          color: $color-red;
+        }
+      }
+    }
+  }
+}

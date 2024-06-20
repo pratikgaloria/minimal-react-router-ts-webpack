@@ -4,11 +4,11 @@ import styles from "./typography.module.scss";
 import ContentLoader from "react-content-loader";
 
 const textLoaderHeights: Record<themeSizes, number> = {
-  xs: 8,
+  xs: 11,
   sm: 12,
-  md: 18,
-  lg: 24,
-  xl: 32,
+  md: 15,
+  lg: 17,
+  xl: 26,
 };
 
 type TextProps = {

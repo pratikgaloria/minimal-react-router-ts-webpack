@@ -8,6 +8,7 @@ export type TInvestment = {
   quantity: number;
   averagePrice: number;
   currency: string;
+  tvSymbol: string;
 };
 
 export class Investments {
@@ -20,7 +21,7 @@ export class Investments {
       .find()
       .map((record) => record as TInvestment)
       .toArray();
-    
+
     writeFileSync(this.filePath, JSON.stringify(data), { encoding: "utf-8" });
 
     return data;
@@ -31,7 +32,7 @@ export class Investments {
       const data = readFileSync(this.filePath, { encoding: "utf-8" });
       console.log("*** reading investments from file...");
       return JSON.parse(data) as TInvestment[];
-    } catch(e) {
+    } catch (e) {
       console.log(e);
       return this.fetch();
     }
@@ -57,5 +58,16 @@ export class Investments {
       { symbol },
       { $set: { ...investment } }
     );
+  }
+
+  async append(symbol: string, fields: Record<string, any>) {
+    return this.collection.findOneAndUpdate(
+      { symbol },
+      { $set: { ...fields } }
+    );
+  }
+
+  async delete(symbol: string) {
+    return this.collection.findOneAndDelete({ symbol });
   }
 }

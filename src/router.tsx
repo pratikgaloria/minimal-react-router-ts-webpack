@@ -3,6 +3,7 @@ import App from "./app";
 import About from "./pages/about";
 import ErrorPage from "./error";
 import Dashboard from "./pages/dashboard";
+import Investments from "./pages/investments";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "investments",
+        element: <Investments />
       },
       {
         path: "about",

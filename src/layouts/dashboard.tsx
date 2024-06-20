@@ -1,4 +1,3 @@
-import Header from "../components/header/header";
 import { Sidebar } from "../components/sidebar/sidebar";
 import styles from "./dashboard.module.scss";
 

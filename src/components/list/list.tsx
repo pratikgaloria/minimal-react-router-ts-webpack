@@ -7,13 +7,15 @@ type ListProps = {
   isLoading?: boolean;
 };
 
-export default function List({ label, items, isLoading }: ListProps) {
+export function List({ label, items, isLoading }: ListProps) {
   return (
     <div className={styles.wrapper}>
-      <Text isLoading={isLoading} className={styles.label}>{label}</Text>
+      <Text size="lg" isLoading={isLoading} className={styles.label}>
+        {label}
+      </Text>
       <ul>
-        {items.map((item) => (
-          <li key={item.key}>{item}</li>
+        {items.map((item, i) => (
+          <li key={isLoading ? i : item.key}>{item}</li>
         ))}
       </ul>
     </div>

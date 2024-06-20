@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { Text } from "../atoms/typography/typography";
 import styles from "./stats.module.scss";
-import useReturns from "../../queries/useReturns";
+import useReturns from "../../api/queries/useReturns";
 
 export type StatsItem = {
   label: string;
@@ -20,11 +20,11 @@ export default function Stats({}: StatsProps) {
         {new Array(4).fill(undefined).map((e, i) => (
           <div key={i} className={styles.item}>
             <div className={styles.label}>
-              <Text isLoading />
-              <Text isLoading />
+              <Text size="lg" isLoading />
+              <Text isLoading loaderWidth={64} />
             </div>
             <div className={styles.value}>
-              <Text size="lg" isLoading />
+              <Text size="xl" isLoading loaderWidth={144} />
             </div>
           </div>
         ))}
@@ -52,7 +52,7 @@ export default function Stats({}: StatsProps) {
       {items.map((item) => (
         <div key={item.label} className={styles.item}>
           <div className={styles.label}>
-            <Text>{item.label}</Text>
+            <Text size="lg">{item.label}</Text>
             <Text
               className={classnames(styles.change, {
                 [styles.negative]: item.change < 0,
@@ -66,7 +66,7 @@ export default function Stats({}: StatsProps) {
             </Text>
           </div>
           <div className={styles.value}>
-            <Text size="lg">
+            <Text size="xl">
               {Intl.NumberFormat("de-DE", {
                 style: "currency",
                 currency: "EUR",
