@@ -48,6 +48,34 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
         </div>
       ),
     }),
+    columnHelper.accessor("oneDayReturnsPercent", {
+      cell: (info) => (
+        <span
+          className={
+            Number(info.getValue()) < 0 ? styles.negative : styles.positive
+          }
+        >
+          {info.getValue().toFixed(1) + "%"}
+        </span>
+      ),
+      header: "Today",
+      enableColumnFilter: false,
+    }),
+    columnHelper.accessor("oneDayReturns", {
+      cell: (info) => (
+        <span
+          className={
+            Number(info.getValue()) < 0 ? styles.negative : styles.positive
+          }
+        >
+          <Currency currency={info.row.original.currency}>
+            {info.getValue()}
+          </Currency>
+        </span>
+      ),
+      header: "",
+      enableColumnFilter: false,
+    }),
     columnHelper.accessor("quantity", {
       cell: (info) => info.getValue().toFixed(1),
       header: "Qty.",

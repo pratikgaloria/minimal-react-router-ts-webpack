@@ -13,7 +13,7 @@
     thead tr,
     tbody tr {
       display: grid;
-      grid-template-columns: 1fr 160px 160px 160px 160px 80px 60px;
+      grid-template-columns: 1fr 80px 80px 160px 160px 160px 160px 80px 60px;
       align-items: center;
       border-bottom: 1px solid $color-border;
       text-align: left;
@@ -71,6 +71,14 @@
             height: 24px;
             border-radius: 12px;
           }
+        }
+
+        .negative {
+          color: $color-red;
+        }
+
+        .positive {
+          color: $color-green;
         }
       }
     }

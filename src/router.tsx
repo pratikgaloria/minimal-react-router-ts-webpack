@@ -4,6 +4,7 @@ import About from "./pages/about";
 import ErrorPage from "./error";
 import Dashboard from "./pages/dashboard";
 import Investments from "./pages/investments";
+import Insights from "./pages/insights";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "investments",
         element: <Investments />
+      },
+      {
+        path: "insights",
+        element: <Insights />
       },
       {
         path: "about",
