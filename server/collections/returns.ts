@@ -1,103 +1,89 @@
-import { Quotes } from "../utils/quotes";
-import { db } from "../db";
-import { TInvestment } from "./investments";
 import { Quote } from "yahoo-finance2/dist/esm/src/modules/quote";
+import { Investments, TInvestment } from "./investments";
+import { Quotes } from "./quotes";
 
 export type TReturnsSymbol = TInvestment & {
-  investmentValue: number;
+  investedValue: number;
   currentValue: number;
   totalReturns: number;
   totalReturnsPercent: number;
   oneDayReturns: number;
   oneDayReturnsPercent: number;
+  totalFees: number;
 };
+
+export type TReturnsChannel = {
+  oneDayReturns: number;
+  totalReturns: number;
+  totalFees: number;
+  symbols: TReturnsSymbol[];
+};
+
+export type TReturnsChannels = Record<string, TReturnsChannel>;
 
 export type TReturns = {
   oneDayReturns: number;
   totalReturns: number;
-  symbols: TReturnsSymbol[];
+  totalFees: number;
+  channels: TReturnsChannels;
 };
 
 export class Returns {
-  constructor() {}
-
-  async getAll() {
-    const investments = await db.investments.getAll();
-    const symbols = investments.map((i) => i.symbol);
-    await fetchConversions(investments);
-
-    const quotes = await Quotes.get(symbols);
-
-    const allReturns: TReturnsSymbol[] = [];
-
+  static async get(): Promise<TReturns> {
     let oneDayReturns = 0;
     let totalReturns = 0;
-    for (const investment of investments) {
-      const quote = quotes[investment.symbol];
-      const returns = await calculateReturns(investment, quote);
+    let totalFees = 0;
+    const channels = await Investments.getReturns();
 
-      const toEUR = await Quotes.getConversion(investment.currency, "EUR");
-      oneDayReturns += returns.oneDayReturns * toEUR;
-      totalReturns += returns.totalReturns * toEUR;
-      allReturns.push(returns);
-    }
-    
+    Object.values(channels).forEach((channel) => {
+      oneDayReturns += channel.oneDayReturns;
+      totalReturns += channel.totalReturns;
+      totalFees += channel.totalFees;
+    });
+
     return {
       oneDayReturns,
       totalReturns,
-      symbols: allReturns,
+      totalFees,
+      channels,
     };
   }
-}
 
-const fetchConversions = async (investments: TInvestment[]) => {
-  /*
-  const currencies = new Set(
-    investments.map((i) => (i.currency === "GBp" ? "GBP" : i.currency))
-  );
-  const keys = Array.from(currencies.keys()).reduce<string[]>((keys, c) => {
-    if (c === "USD") return [...keys, "USDEUR=X"];
-    else if (c === "EUR") return [...keys, "EURUSD=X"];
-
-    return [...keys, `${c}USD=X`, `${c}EUR=X`];
-  }, []);
-  */
-  const keys = ["USDEUR=X", "EURUSD=X", "GBPEUR=X"];
-  return await Quotes.getConversions(keys);
-};
-
-const calculateReturns = async (
-  investment: TInvestment,
-  quote: Quote
-): Promise<TInvestment & TReturnsSymbol> => {
-  if (quote.currency === "GBp") {
-    quote.currency = "GBP";
-    quote.regularMarketPrice = quote.regularMarketPrice! / 1000;
-    quote.regularMarketPreviousClose = quote.regularMarketPreviousClose! / 1000;
-  }
-
-  const conversionRate = await Quotes.getConversion(
-    investment.currency,
-    quote.currency!
-  );
-
-  const investmentValue = investment.averagePrice * investment.quantity;
-  const currentValue =
-    (quote.regularMarketPrice! / conversionRate) * investment.quantity;
-  const totalReturns = currentValue - investmentValue;
-  const totalReturnsPercent = ((100 * currentValue) / investmentValue) - 100;
-  const previousValue =
-    (quote.regularMarketPreviousClose! / conversionRate) * investment.quantity;
-  const oneDayReturns = currentValue - previousValue;
-  const oneDayReturnsPercent = (oneDayReturns * 100) / previousValue;
-
-  return {
-    ...investment,
-    investmentValue,
-    currentValue,
-    totalReturns,
-    totalReturnsPercent,
-    oneDayReturns,
-    oneDayReturnsPercent,
+  static async calculateReturns(
+    investment: TInvestment,
+    quote: Quote
+  ): Promise<TInvestment & TReturnsSymbol> {
+    if (quote.currency === "GBp") {
+      quote.currency = "GBP";
+      quote.regularMarketPrice = quote.regularMarketPrice! / 1000;
+      quote.regularMarketPreviousClose = quote.regularMarketPreviousClose! / 1000;
+    }
+  
+    const conversionRate = await Quotes.getConversion(
+      investment.currency,
+      quote.currency!
+    );
+  
+    const investedValue = investment.averagePrice * investment.quantity;
+    const currentValue =
+      (quote.regularMarketPrice! / conversionRate) * investment.quantity;
+    const totalReturns = currentValue - investedValue;
+    const totalReturnsPercent = (100 * currentValue) / investedValue - 100;
+    const previousValue =
+      (quote.regularMarketPreviousClose! / conversionRate) * investment.quantity;
+    const oneDayReturns = currentValue - previousValue;
+    const oneDayReturnsPercent = (oneDayReturns * 100) / previousValue;
+    const totalFees = investment.channel.fees;
+  
+    return {
+      ...investment,
+      investedValue,
+      currentValue,
+      totalReturns,
+      totalReturnsPercent,
+      oneDayReturns,
+      oneDayReturnsPercent,
+      totalFees,
+    };
   };
-};
+}
