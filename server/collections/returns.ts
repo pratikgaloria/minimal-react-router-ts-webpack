@@ -49,7 +49,7 @@ export class Returns {
     };
   }
 
-  static async calculateReturns(
+  static async calculate(
     investment: TInvestment,
     quote: Quote
   ): Promise<TInvestment & TReturnsSymbol> {

@@ -69,5 +69,6 @@
   { "yahoo": "ACHR", "tradingView": "NYSE:ACHR", "trading212": "ACIC_US_EQ" },
   { "yahoo": "AVGO", "tradingView": "NASDAQ:AVGO", "trading212": "AVGO_US_EQ" },
   { "yahoo": "INTC", "tradingView": "NASDAQ:INTC", "trading212": "INTC_US_EQ" },
-  { "yahoo": "CYSE.L", "tradingView": "LSE:CYSE", "trading212": "CYSEl_EQ" }
+  { "yahoo": "CYSE.L", "tradingView": "LSE:CYSE", "trading212": "CYSEl_EQ" },
+  { "yahoo": "SMCI", "tradingView": "NASDAQ:SMCI", "trading212": "SMCI_US_EQ" }
 ]

@@ -91,16 +91,15 @@ export class Trading212 extends Channel<Trading212PortfolioPosition> {
       const yahooSymbol = investment.symbols.yahoo;
 
       if (!yahooSymbol) {
-        console.warn(
+        log.warn(
           "Returns",
-          `quote not found for investment in ${investment.channel.name}: `,
-          investment.channel.symbol
+          `quote not found for investment in ${investment.channel.name}: ${investment.channel.symbol}`
         );
         continue;
       }
 
       const quote = quotes.get(yahooSymbol) as Quote;
-      const returns = await Returns.calculateReturns(investment, quote);
+      const returns = await Returns.calculate(investment, quote);
 
       const toEUR = await Quotes.getConversion(investment.currency, "EUR");
       oneDayReturns += returns.oneDayReturns * toEUR;
