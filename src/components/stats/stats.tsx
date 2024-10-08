@@ -7,6 +7,7 @@ export type StatsItem = {
   label: string;
   value: number;
   change: number;
+  logo?: string;
 };
 
 type StatsProps = {};
@@ -39,12 +40,13 @@ export default function Stats({}: StatsProps) {
   const items: StatsItem[] = [
     {
       label: "Global",
-      change: returns.oneDayReturns,
-      value: returns.totalReturns,
+      change: returns.channels['trading212'].oneDayReturns,
+      value: returns.channels['trading212'].totalReturns,
+      logo: "market-global",
     },
-    { label: "Overdue Invoices", change: -52.3, value: 12787.0 },
-    { label: "Outstanding", change: 14.9, value: 877621.0 },
-    { label: "Expenses", change: 77.2, value: 30156.0 },
+    { label: "India", change: -52.3, value: 12787.0, logo: "market-india" },
+    { label: "Crypto", change: 14.9, value: 877621.0, logo: "market-crypto" },
+    { label: "ETFs", change: 77.2, value: 30156.0, logo: "market-etfs" },
   ];
 
   return (
@@ -52,7 +54,13 @@ export default function Stats({}: StatsProps) {
       {items.map((item) => (
         <div key={item.label} className={styles.item}>
           <div className={styles.label}>
-            <Text size="lg">{item.label}</Text>
+            <div className={styles.symbol}>
+              <img
+                loading="lazy"
+                src={"/public/images/logos/" + item.logo + ".svg"}
+              />
+              <Text size="lg">{item.label}</Text>
+            </div>
             <Text
               className={classnames(styles.change, {
                 [styles.negative]: item.change < 0,

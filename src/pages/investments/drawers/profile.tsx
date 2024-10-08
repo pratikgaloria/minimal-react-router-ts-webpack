@@ -13,7 +13,6 @@ import { Tabs } from "../../../components/tabs";
 import { Icon } from "../../../components/icons/icon";
 import { Currency } from "../../../components/atoms/currency/currency";
 import { Button } from "../../../components/atoms/button/button";
-import { UpdateInvestment } from "./update";
 import styles from "./profile.module.scss";
 
 type ProfileDrawerProps = {
@@ -44,11 +43,11 @@ export const ProfileDrawer = ({
               loading="lazy"
               src={
                 "/public/images/logos/" +
-                symbolData?.symbol.toLocaleLowerCase() +
+                symbolData?.symbols.yahoo.toLocaleLowerCase() +
                 ".svg"
               }
             />
-            <Text size="xl">{symbolData?.symbol}</Text>
+            <Text size="xl">{symbolData?.symbols.yahoo}</Text>
           </div>
           <div className={styles.navigator}>
             <Button variant="onlyIcon" onClick={() => onNavigate("left")}>
@@ -70,7 +69,6 @@ export const ProfileDrawer = ({
         <Icon icon="chart-line" />
         <Icon icon="tachometer-alt" />
         <Icon icon="balance-scale" />
-        <Icon icon="edit" />
       </Tabs>
       {tab === 0 && symbolData && (
         <div className={styles.widgets}>
@@ -102,7 +100,7 @@ export const ProfileDrawer = ({
               <Text size="lg">Invested Value</Text>
               <Text size="lg" variant="thick">
                 <Currency currency={symbolData.currency}>
-                  {symbolData.investmentValue}
+                  {symbolData.investedValue}
                 </Currency>
               </Text>
             </div>
@@ -129,9 +127,9 @@ export const ProfileDrawer = ({
               </Text>
             </div>
           </div>
-          <SymbolInfo symbol={symbolData.tvSymbol} autosize />
+          <SymbolInfo symbol={symbolData.symbols.tradingView} autosize />
           <MiniChart
-            symbol={symbolData.tvSymbol}
+            symbol={symbolData.symbols.tradingView}
             chartOnly
             dateRange="12M"
             trendLineColor="#4f46e5"
@@ -145,12 +143,12 @@ export const ProfileDrawer = ({
         <div className={styles.analysis}>
           <TechnicalAnalysis
             interval="1M"
-            symbol={symbolData.tvSymbol}
+            symbol={symbolData.symbols.tradingView}
             width={412}
             height={320}
           />
           <Timeline
-            symbol={symbolData.tvSymbol}
+            symbol={symbolData.symbols.tradingView}
             feedMode="symbol"
             width={412}
             height={370}
@@ -160,17 +158,11 @@ export const ProfileDrawer = ({
       {tab === 2 && symbolData && (
         <div className={styles.fundamentals}>
           <FundamentalData
-            symbol={symbolData.tvSymbol}
+            symbol={symbolData.symbols.tradingView}
             width="100%"
             height={710}
           />
         </div>
-      )}
-      {tab === 3 && symbolData && (
-        <UpdateInvestment
-          symbolData={symbolData}
-          navigateNext={() => onNavigate("right")}
-        />
       )}
     </Drawer>
   );

@@ -1,5 +1,4 @@
 import { MongoClient, Db } from "mongodb";
-import { Investments } from "./collections/investments";
 import { Returns } from "./collections/returns";
 
 process.env.MONGODB_URI =
@@ -26,10 +25,6 @@ export class DB {
     });
 
     this.platform = this.client.db("platform");
-  }
-
-  get investments() {
-    return new Investments(this.platform.collection("investments"));
   }
 
   get returns() {

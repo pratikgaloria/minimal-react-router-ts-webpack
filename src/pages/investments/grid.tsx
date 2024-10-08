@@ -32,7 +32,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
   );
 
   const columns = [
-    columnHelper.accessor("symbol", {
+    columnHelper.accessor("symbols.yahoo", {
       header: "Symbol",
       cell: (info) => (
         <div className={styles.symbol}>
@@ -81,7 +81,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
       header: "Qty.",
       enableColumnFilter: false,
     }),
-    columnHelper.accessor("investmentValue", {
+    columnHelper.accessor("investedValue", {
       cell: (info) => <Currency currency="USD">{info.getValue()}</Currency>,
       header: "Invested value",
       enableColumnFilter: false,
@@ -101,7 +101,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
       header: "P/L",
       enableColumnFilter: false,
     }),
-    columnHelper.accessor("_id", {
+    columnHelper.accessor("id", {
       header: "",
       cell: (info) => (
         <Button
@@ -119,7 +119,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
   ];
 
   const table = useReactTable({
-    data: returns.symbols || [],
+    data: returns.channels['trading212'].symbols || [],
     columns,
     filterFns: {},
     state: {

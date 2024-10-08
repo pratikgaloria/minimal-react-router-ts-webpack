@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./app";
-import About from "./pages/about";
 import ErrorPage from "./error";
 import Dashboard from "./pages/dashboard";
 import Investments from "./pages/investments";
@@ -23,10 +22,6 @@ export const router = createBrowserRouter([
       {
         path: "insights",
         element: <Insights />
-      },
-      {
-        path: "about",
-        element: <About />,
       },
     ],
   },

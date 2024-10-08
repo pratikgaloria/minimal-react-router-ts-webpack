@@ -29,8 +29,17 @@
       justify-content: space-between;
       align-items: center;
 
-      span:nth-child(1) {
+      .symbol {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         color: $color-grey;
+
+        > img {
+          width: 20px;
+          height: 20px;
+          border-radius: 10px;
+        }
       }
     }
   }

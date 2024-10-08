@@ -15,12 +15,12 @@ export default function Insights() {
   const bubbleChartSeries: Highcharts.SeriesBubbleOptions = useMemo(
     () => ({
       type: "bubble",
-      data: returns?.symbols
+      data: returns?.channels['trading212'].symbols
         .map((s) => ({
           x: s.averagePrice,
           y: s.totalReturnsPercent,
           z: s.totalReturns,
-          name: s.symbol,
+          name: s.symbols.yahoo,
         })),
       negativeColor: "red",
     }),
@@ -29,11 +29,11 @@ export default function Insights() {
 
   const plSeries: Highcharts.SeriesBarOptions[] = useMemo(
     () =>
-      returns?.symbols
+      returns?.channels['trading212'].symbols
         .sort((a, b) => a.totalReturns - b.totalReturns)
         .map((s) => ({
           type: "bar",
-          name: s.symbol,
+          name: s.symbols.yahoo,
           data: [Number(s.totalReturns.toFixed(2))],
           currency: s.currency,
         })) ?? [],
@@ -76,9 +76,9 @@ export default function Insights() {
           name: symbol,
           parent: meta.industry,
           value: Number(
-            returns?.symbols
-              .find((s) => s.symbol === symbol)
-              ?.investmentValue.toFixed(2)
+            returns?.channels['trading212'].symbols
+              .find((s) => s.symbols.yahoo === symbol)
+              ?.investedValue.toFixed(2)
           ),
         });
       });

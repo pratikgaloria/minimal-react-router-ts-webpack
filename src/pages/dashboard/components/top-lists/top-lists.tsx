@@ -27,7 +27,7 @@ export default function TopLists({}: TopListsProps) {
     return <h3>Something went wrong!</h3>;
   }
 
-  const sortedReturns = returns.symbols.sort(
+  const sortedReturns = returns.channels['trading212'].symbols.sort(
     (a, b) => b.oneDayReturns - a.oneDayReturns
   );
   const topWinners = sortedReturns.slice(0, 5);
@@ -50,8 +50,8 @@ export default function TopLists({}: TopListsProps) {
           label={label}
           items={items.map((tw) => (
             <TopListItem
-              key={tw.symbol}
-              title={tw.symbol}
+              key={tw.symbols.yahoo}
+              title={tw.symbols.yahoo}
               oneDayReturns={tw.oneDayReturns}
               currency={tw.currency}
               change={tw.oneDayReturnsPercent}
