@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TReturnsSymbol } from "../../api/models/returns";
-import { Button } from "../../components/atoms/button/button";
+import { Pills } from "../../components/atoms/pills/pills";
 import { Header } from "../../components/header/header";
 import { ProfileDrawer } from "./drawers/profile";
 import { InvestmentsGrid } from "./grid";
@@ -15,6 +15,9 @@ const enum Flow {
 
 export default function Investments() {
   const [flow, setFlow] = useState<Flow>(Flow.Idle);
+  const [selectedChannel, setChannel] = useState<"trading212" | "india">(
+    "trading212"
+  );
   const [selectedSymbol, setSelectedSymbol] = useState<TReturnsSymbol>();
   const { data: returns } = useReturns();
 
@@ -26,7 +29,7 @@ export default function Investments() {
   const handleNavigate = (direction: "left" | "right") => {
     if (!returns || !selectedSymbol) return;
 
-    const currentIndex = returns.channels['trading212'].symbols.findIndex(
+    const currentIndex = returns.channels[selectedChannel].symbols.findIndex(
       (s) => s.symbols.yahoo === selectedSymbol.symbols.yahoo
     );
     const nextIndex =
@@ -34,11 +37,13 @@ export default function Investments() {
 
     let navigateToIndex = nextIndex;
     if (nextIndex < 0) {
-      navigateToIndex = returns.channels['trading212'].symbols.length - 1;
-    } else if (nextIndex === returns.channels['trading212'].symbols.length) {
+      navigateToIndex = returns.channels[selectedChannel].symbols.length - 1;
+    } else if (nextIndex === returns.channels[selectedChannel].symbols.length) {
       navigateToIndex = 0;
     }
-    setSelectedSymbol(returns.channels['trading212'].symbols[navigateToIndex]);
+    setSelectedSymbol(
+      returns.channels[selectedChannel].symbols[navigateToIndex]
+    );
   };
 
   return (
@@ -50,7 +55,20 @@ export default function Investments() {
         onNavigate={handleNavigate}
       />
       <Header label="Investments" />
-      {returns && <InvestmentsGrid returns={returns} onSelect={handleSelect} />}
+      <Pills
+        items={[
+          { id: "trading212", label: "Global", logo: "market-global" },
+          { id: "india", label: "India", logo: "market-india" },
+        ]}
+        selectedItem={selectedChannel}
+        onSelect={(id) => setChannel(id as "trading212" | "india")}
+      />
+      {returns && (
+        <InvestmentsGrid
+          returns={returns.channels[selectedChannel].symbols}
+          onSelect={handleSelect}
+        />
+      )}
     </div>
   );
 }

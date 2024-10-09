@@ -1,0 +1,29 @@
+@import "../../../styles/theme.scss";
+
+.pills {
+  display: flex;
+  gap: 8px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+
+    &.active {
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+    }
+  }
+}

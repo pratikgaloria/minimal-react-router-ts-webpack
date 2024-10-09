@@ -16,12 +16,12 @@ import { Currency } from "../../components/atoms/currency/currency";
 import { Icon } from "../../components/icons/icon";
 import { Button } from "../../components/atoms/button/button";
 import { SearchBar } from "../../components/forms/search-bar";
-import { TReturns, TReturnsSymbol } from "../../api/models/returns";
+import { TReturnsSymbol } from "../../api/models/returns";
 
 const columnHelper = createColumnHelper<TReturnsSymbol>();
 
 type InvestmentGridProps = {
-  returns: TReturns;
+  returns: TReturnsSymbol[];
   onSelect: (symbol: TReturnsSymbol) => void;
 };
 
@@ -82,17 +82,17 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
       enableColumnFilter: false,
     }),
     columnHelper.accessor("investedValue", {
-      cell: (info) => <Currency currency="USD">{info.getValue()}</Currency>,
+      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
       header: "Invested value",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("currentValue", {
-      cell: (info) => <Currency currency="USD">{info.getValue()}</Currency>,
+      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
       header: "Current value",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("totalReturns", {
-      cell: (info) => <Currency currency="USD">{info.getValue()}</Currency>,
+      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
       header: "Returns",
       enableColumnFilter: false,
     }),
@@ -119,7 +119,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
   ];
 
   const table = useReactTable({
-    data: returns.channels['trading212'].symbols || [],
+    data: returns || [],
     columns,
     filterFns: {},
     state: {
