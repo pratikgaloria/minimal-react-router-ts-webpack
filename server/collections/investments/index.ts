@@ -1,7 +1,8 @@
 import fs from "fs";
 import log from "npmlog";
 import { Channel } from "./channels";
-import { trading212 } from "./channels/trading212";
+import { channelTrading212 as trading212 } from "./channels/trading212";
+import { channelIndia as india } from "./channels/india";
 import { TReturnsChannel } from "../returns";
 
 export type TInvestment = {
@@ -21,18 +22,20 @@ export type TInvestment = {
 };
 
 export class Investments {
-  static channels: Channel<unknown>[] = [trading212];
+  static channels: Channel<unknown>[] = [trading212, india];
 
   static async fetch() {
     await Promise.all(
       this.channels.map(async (channel) => {
         log.info("Investments", `fetching portfolio for ${channel.name}...`);
-
         const data = await channel.fetch();
-        fs.writeFileSync(
-          `${process.env.INVESTMENTS_PATH}/${channel.name}.json`,
-          JSON.stringify(data)
-        );
+
+        if (channel.writeToDisk) {
+          fs.writeFileSync(
+            `${process.env.INVESTMENTS_PATH}/${channel.name}.json`,
+            JSON.stringify(data)
+          );
+        }
       })
     );
   }

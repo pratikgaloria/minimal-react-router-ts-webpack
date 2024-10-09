@@ -25,7 +25,7 @@ type Trading212PortfolioPosition = {
   ticker: string;
 };
 
-export class Trading212 extends Channel<Trading212PortfolioPosition> {
+export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
   private investments: TInvestment[] = [];
   private symbols = new Set<string>();
   private symbolsToCurrency = new Map<string, string>();
@@ -183,4 +183,4 @@ export class Trading212 extends Channel<Trading212PortfolioPosition> {
   }
 }
 
-export const trading212 = new Trading212("trading212");
+export const channelTrading212 = new ChannelTrading212("trading212");

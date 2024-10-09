@@ -70,5 +70,17 @@
   { "yahoo": "AVGO", "tradingView": "NASDAQ:AVGO", "trading212": "AVGO_US_EQ" },
   { "yahoo": "INTC", "tradingView": "NASDAQ:INTC", "trading212": "INTC_US_EQ" },
   { "yahoo": "CYSE.L", "tradingView": "LSE:CYSE", "trading212": "CYSEl_EQ" },
-  { "yahoo": "SMCI", "tradingView": "NASDAQ:SMCI", "trading212": "SMCI_US_EQ" }
+  { "yahoo": "SMCI", "tradingView": "NASDAQ:SMCI", "trading212": "SMCI_US_EQ" },
+  { "yahoo": "HFCL.NS", "tradingView": "NSE:HFCL", "india": "HFCL" },
+  { "yahoo": "IDBI.NS", "tradingView": "NSE:IDBI", "india": "IDBI" },
+  { "yahoo": "IFCI.NS", "tradingView": "NSE:IFCI", "india": "IFCI" },
+  { "yahoo": "INOXGREEN.NS", "tradingView": "NSE:INOXGREEN", "india": "INOXGREEN" },
+  { "yahoo": "IRB.NS", "tradingView": "NSE:IRB", "india": "IRB" },
+  { "yahoo": "IRFC.NS", "tradingView": "NSE:IRFC", "india": "IRFC" },
+  { "yahoo": "ITC.NS", "tradingView": "NSE:ITC", "india": "ITC" },
+  { "yahoo": "JIOFIN.NS", "tradingView": "NSE:JIOFIN", "india": "JIOFIN" },
+  { "yahoo": "NHPC.NS", "tradingView": "NSE:NHPC", "india": "NHPC" },
+  { "yahoo": "URJA.NS", "tradingView": "NSE:URJA", "india": "URJA" },
+  { "yahoo": "ZOMATO.NS", "tradingView": "NSE:ZOMATO", "india": "ZOMATO" },
+  { "yahoo": "HDIL.NS", "tradingView": "NSE:HDIL", "india": "HDIL" }
 ]

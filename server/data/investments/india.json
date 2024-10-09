@@ -1,0 +1,62 @@
+[
+  {
+    "ticker": "HFCL",
+    "quantity": 200,
+    "averagePrice": 106.35
+  },
+  {
+    "ticker": "IDBI",
+    "quantity": 300,
+    "averagePrice": 45.43
+  },
+  {
+    "ticker": "IFCI",
+    "quantity": 500,
+    "averagePrice": 55.0
+  },
+  {
+    "ticker": "INOXGREEN",
+    "quantity": 100,
+    "averagePrice": 131.81
+  },
+  {
+    "ticker": "IRB",
+    "quantity": 400,
+    "averagePrice": 57.95
+  },
+  {
+    "ticker": "IRFC",
+    "quantity": 100,
+    "averagePrice": 171.4
+  },
+  {
+    "ticker": "ITC",
+    "quantity": 100,
+    "averagePrice": 441.65
+  },
+  {
+    "ticker": "JIOFIN",
+    "quantity": 100,
+    "averagePrice": 240.0
+  },
+  {
+    "ticker": "NHPC",
+    "quantity": 500,
+    "averagePrice": 82.9
+  },
+  {
+    "ticker": "URJA",
+    "quantity": 500,
+    "averagePrice": 26.0
+  },
+  {
+    "ticker": "ZOMATO",
+    "quantity": 200,
+    "averagePrice": 90.56
+  },
+  {
+    "ticker": "HDIL",
+    "quantity": 760,
+    "averagePrice": 35.36
+  }
+]

@@ -40,11 +40,16 @@ export default function Stats({}: StatsProps) {
   const items: StatsItem[] = [
     {
       label: "Global",
-      change: returns.channels['trading212'].oneDayReturns,
-      value: returns.channels['trading212'].totalReturns,
+      change: returns.channels["trading212"].oneDayReturns,
+      value: returns.channels["trading212"].totalReturns,
       logo: "market-global",
     },
-    { label: "India", change: -52.3, value: 12787.0, logo: "market-india" },
+    {
+      label: "India",
+      change: returns.channels["india"].oneDayReturns,
+      value: returns.channels["india"].totalReturns,
+      logo: "market-india",
+    },
     { label: "Crypto", change: 14.9, value: 877621.0, logo: "market-crypto" },
     { label: "ETFs", change: 77.2, value: 30156.0, logo: "market-etfs" },
   ];
