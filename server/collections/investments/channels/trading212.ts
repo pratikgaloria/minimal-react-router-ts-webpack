@@ -1,7 +1,7 @@
 import log from "npmlog";
 import fs from "fs";
 import { Channel } from ".";
-import { TInvestment } from "..";
+import { TInvestment, TInvestmentType } from "..";
 import { symbols } from "../../symbols";
 import { Returns, TReturnsChannel, TReturnsSymbol } from "../../returns";
 import { Quotes } from "../../quotes";
@@ -28,7 +28,7 @@ type Trading212PortfolioPosition = {
 export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
   private investments: TInvestment[] = [];
   private symbols = new Set<string>();
-  private symbolsToCurrency = new Map<string, string>();
+  private instruments = new Map<string, { currency: string; type: string }>();
   private apiHeaders = {
     Authorization: process.env.TRADING212_API_KEY as string,
   };
@@ -56,7 +56,10 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
     instruments
       .filter((instrument) => this.symbols.has(instrument.ticker))
       .forEach((instrument) => {
-        this.symbolsToCurrency.set(instrument.ticker, instrument.currencyCode);
+        this.instruments.set(instrument.ticker, {
+          currency: instrument.currencyCode,
+          type: instrument.type,
+        });
       });
 
     investments
@@ -118,7 +121,7 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
 
   private map(position: Trading212PortfolioPosition): TInvestment {
     const symbol = symbols.get("trading212", position.ticker);
-    const { averagePrice, quantity, currency } =
+    const { averagePrice, quantity, currency, type } =
       this.getSanitizedValues(position);
 
     return {
@@ -126,6 +129,7 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
       quantity,
       averagePrice,
       currency,
+      type,
       channel: {
         name: this.name,
         symbol: position.ticker,
@@ -140,20 +144,26 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
 
   private getSanitizedValues(position: Trading212PortfolioPosition) {
     const { quantity, averagePrice } = position;
-    const currency = this.symbolsToCurrency.get(position.ticker);
+    const instrument = this.instruments.get(position.ticker);
 
-    if (currency === "GBX") {
+    const type = instrument?.type
+      ? (instrument.type.toLowerCase() as TInvestmentType)
+      : "stock";
+
+    if (instrument!.currency === "GBX") {
       return {
         quantity: quantity / 1000,
         averagePrice: averagePrice / 1000,
         currency: "GBP",
+        type,
       };
     }
 
     return {
       quantity,
       averagePrice,
-      currency: currency ?? "USD",
+      currency: instrument!.currency ?? "USD",
+      type,
     };
   }
 

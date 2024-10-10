@@ -1,7 +1,7 @@
 import log from "npmlog";
 import fs from "fs";
 import { Channel } from ".";
-import { TInvestment } from "..";
+import { TInvestment, TInvestmentType } from "..";
 import { symbols } from "../../symbols";
 import { Returns, TReturnsChannel, TReturnsSymbol } from "../../returns";
 import { Quotes } from "../../quotes";
@@ -11,6 +11,7 @@ type IndiaPosition = {
   averagePrice: number;
   quantity: number;
   ticker: string;
+  type: TInvestmentType;
 };
 
 export class ChannelIndia extends Channel<IndiaPosition> {
@@ -88,6 +89,7 @@ export class ChannelIndia extends Channel<IndiaPosition> {
       quantity: position.quantity,
       averagePrice: position.averagePrice,
       currency: "INR",
+      type: position.type,
       channel: {
         name: this.name,
         symbol: position.ticker,

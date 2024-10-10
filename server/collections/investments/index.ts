@@ -5,11 +5,14 @@ import { channelTrading212 as trading212 } from "./channels/trading212";
 import { channelIndia as india } from "./channels/india";
 import { TReturnsChannel } from "../returns";
 
+export type TInvestmentType = "stock" | "etf";
+
 export type TInvestment = {
   id: string;
   quantity: number;
   averagePrice: number;
   currency: string;
+  type: TInvestmentType;
   channel: {
     name: string;
     symbol: string;

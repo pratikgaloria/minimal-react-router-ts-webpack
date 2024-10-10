@@ -2,61 +2,73 @@
   {
     "ticker": "HFCL",
     "quantity": 200,
-    "averagePrice": 106.35
+    "averagePrice": 106.35,
+    "type": "stock"
   },
   {
     "ticker": "IDBI",
     "quantity": 300,
-    "averagePrice": 45.43
+    "averagePrice": 45.43,
+    "type": "stock"
   },
   {
     "ticker": "IFCI",
     "quantity": 500,
-    "averagePrice": 55.0
+    "averagePrice": 55.0,
+    "type": "stock"
   },
   {
     "ticker": "INOXGREEN",
     "quantity": 100,
-    "averagePrice": 131.81
+    "averagePrice": 131.81,
+    "type": "stock"
   },
   {
     "ticker": "IRB",
     "quantity": 400,
-    "averagePrice": 57.95
+    "averagePrice": 57.95,
+    "type": "stock"
   },
   {
     "ticker": "IRFC",
     "quantity": 100,
-    "averagePrice": 171.4
+    "averagePrice": 171.4,
+    "type": "stock"
   },
   {
     "ticker": "ITC",
     "quantity": 100,
-    "averagePrice": 441.65
+    "averagePrice": 441.65,
+    "type": "stock"
   },
   {
     "ticker": "JIOFIN",
     "quantity": 100,
-    "averagePrice": 240.0
+    "averagePrice": 240.0,
+    "type": "stock"
   },
   {
     "ticker": "NHPC",
     "quantity": 500,
-    "averagePrice": 82.9
+    "averagePrice": 82.9,
+    "type": "stock"
   },
   {
     "ticker": "URJA",
     "quantity": 500,
-    "averagePrice": 26.0
+    "averagePrice": 26.0,
+    "type": "stock"
   },
   {
     "ticker": "ZOMATO",
     "quantity": 200,
-    "averagePrice": 90.56
+    "averagePrice": 90.56,
+    "type": "stock"
   },
   {
     "ticker": "HDIL",
     "quantity": 760,
-    "averagePrice": 35.36
+    "averagePrice": 35.36,
+    "type": "stock"
   }
 ]
