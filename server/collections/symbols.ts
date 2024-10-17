@@ -1,12 +1,13 @@
 import fs from "fs";
 
-export type SymbolChannel = "yahoo" | "trading212" | "tradingView" | "india";
+export type SymbolChannel = "yahoo" | "trading212" | "tradingView" | "india" | "crypto";
 
 type TSymbol = {
   yahoo: string;
   trading212: string;
   tradingView?: string;
   india?: string;
+  crypto?: string;
 };
 
 class Symbols {

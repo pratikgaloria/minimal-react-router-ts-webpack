@@ -1,0 +1,146 @@
+[
+  {
+    "ticker": "SOL",
+    "quantity": 8,
+    "averagePrice": 65.1575,
+    "type": "crypto"
+  },
+  {
+    "ticker": "ETH",
+    "quantity": 0.3,
+    "averagePrice": 1774.8333,
+    "type": "crypto"
+  },
+  {
+    "ticker": "BTC",
+    "quantity": 0.01,
+    "averagePrice": 20198,
+    "type": "crypto"
+  },
+  {
+    "ticker": "ETC",
+    "quantity": 10,
+    "averagePrice": 18.464,
+    "type": "crypto"
+  },
+  {
+    "ticker": "MATIC",
+    "quantity": 500,
+    "averagePrice": 0.85732,
+    "type": "crypto"
+  },
+  {
+    "ticker": "XRP",
+    "quantity": 200,
+    "averagePrice": 0.6199,
+    "type": "crypto"
+  },
+  {
+    "ticker": "PEPE",
+    "quantity": 10000000,
+    "averagePrice": 0.000007213,
+    "type": "crypto"
+  },
+  {
+    "ticker": "ADA",
+    "quantity": 200,
+    "averagePrice": 1.2232,
+    "type": "crypto"
+  },
+  {
+    "ticker": "RNDR",
+    "quantity": 10,
+    "averagePrice": 11.306,
+    "type": "crypto"
+  },
+  {
+    "ticker": "DOT",
+    "quantity": 10,
+    "averagePrice": 18.1779,
+    "type": "crypto"
+  },
+  {
+    "ticker": "LTC",
+    "quantity": 0.3,
+    "averagePrice": 145.6,
+    "type": "crypto"
+  },
+  {
+    "ticker": "SHIB",
+    "quantity": 1000000,
+    "averagePrice": 0.00001065,
+    "type": "crypto"
+  },
+  {
+    "ticker": "GRT",
+    "quantity": 100,
+    "averagePrice": 0.3893,
+    "type": "crypto"
+  },
+  {
+    "ticker": "DOGE",
+    "quantity": 100,
+    "averagePrice": 0.1207,
+    "type": "crypto"
+  },
+  {
+    "ticker": "MASK",
+    "quantity": 5,
+    "averagePrice": 6.082,
+    "type": "crypto"
+  },
+  {
+    "ticker": "XLM",
+    "quantity": 100,
+    "averagePrice": 0.2782,
+    "type": "crypto"
+  },
+  {
+    "ticker": "MANA",
+    "quantity": 30,
+    "averagePrice": 2.3563,
+    "type": "crypto"
+  },
+  {
+    "ticker": "OXT",
+    "quantity": 100,
+    "averagePrice": 0.2337,
+    "type": "crypto"
+  },
+  {
+    "ticker": "BAT",
+    "quantity": 30,
+    "averagePrice": 1.0286,
+    "type": "crypto"
+  },
+  {
+    "ticker": "CHZ",
+    "quantity": 50,
+    "averagePrice": 0.2812,
+    "type": "crypto"
+  },
+  {
+    "ticker": "LRC",
+    "quantity": 30,
+    "averagePrice": 2.4046,
+    "type": "crypto"
+  },
+  {
+    "ticker": "SUSHI",
+    "quantity": 4,
+    "averagePrice": 8.0625,
+    "type": "crypto"
+  },
+  {
+    "ticker": "CELO",
+    "quantity": 2,
+    "averagePrice": 5.685,
+    "type": "crypto"
+  },
+  {
+    "ticker": "ANKR",
+    "quantity": 50,
+    "averagePrice": 0.1028,
+    "type": "crypto"
+  }
+]

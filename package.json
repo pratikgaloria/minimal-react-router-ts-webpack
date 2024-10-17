@@ -54,7 +54,7 @@
     "react-router-dom": "^6.21.3",
     "react-sparklines": "^1.7.0",
     "react-ts-tradingview-widgets": "^1.2.5",
-    "yahoo-finance2": "^2.13.0",
+    "yahoo-finance2": "^2.13.2",
     "yup": "^1.4.0"
   }
 }

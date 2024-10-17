@@ -3,9 +3,10 @@ import log from "npmlog";
 import { Channel } from "./channels";
 import { channelTrading212 as trading212 } from "./channels/trading212";
 import { channelIndia as india } from "./channels/india";
+import { channelCrypto as crypto } from "./channels/crypto";
 import { TReturnsChannel } from "../returns";
 
-export type TInvestmentType = "stock" | "etf";
+export type TInvestmentType = "stock" | "etf" | "crypto";
 
 export type TInvestment = {
   id: string;
@@ -21,11 +22,11 @@ export type TInvestment = {
   symbols: {
     yahoo: string;
     tradingView: string;
-  }
+  };
 };
 
 export class Investments {
-  static channels: Channel<unknown>[] = [trading212, india];
+  static channels: Channel<unknown>[] = [trading212, india, crypto];
 
   static async fetch() {
     await Promise.all(

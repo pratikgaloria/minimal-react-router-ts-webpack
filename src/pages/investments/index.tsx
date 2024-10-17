@@ -15,10 +15,12 @@ const enum Flow {
 
 export default function Investments() {
   const [flow, setFlow] = useState<Flow>(Flow.Idle);
-  const [selectedChannel, setChannel] = useState<"trading212" | "india">(
-    "trading212"
+  const [selectedChannel, setChannel] = useState<
+    "trading212" | "india" | "crypto"
+  >("trading212");
+  const [selectedType, setSelectedType] = useState<"stock" | "etf" | "crypto">(
+    "stock"
   );
-  const [selectedType, setSelectedType] = useState<"stock" | "etf">("stock");
   const [selectedSymbol, setSelectedSymbol] = useState<TReturnsSymbol>();
   const { data: returns } = useReturns();
 
@@ -65,19 +67,29 @@ export default function Investments() {
         items={[
           { id: "trading212", label: "Global", logo: "market-global" },
           { id: "india", label: "India", logo: "market-india" },
+          { id: "crypto", label: "Crypto", logo: "market-crypto" },
         ]}
         selectedItem={selectedChannel}
-        onSelect={(id) => setChannel(id as "trading212" | "india")}
+        onSelect={(id) => {
+          setChannel(id as "trading212" | "india");
+          if (id === "crypto") {
+            setSelectedType("crypto");
+          } else {
+            setSelectedType("stock");
+          }
+        }}
       />
-      <Pills
-        items={[
-          { id: "stock", label: "Stock" },
-          { id: "etf", label: "ETF" },
-        ]}
-        size="sm"
-        selectedItem={selectedType}
-        onSelect={(type) => setSelectedType(type as "stock" | "etf")}
-      />
+      {selectedChannel !== "crypto" && (
+        <Pills
+          items={[
+            { id: "stock", label: "Stock" },
+            { id: "etf", label: "ETF" },
+          ]}
+          size="sm"
+          selectedItem={selectedType}
+          onSelect={(type) => setSelectedType(type as "stock" | "etf")}
+        />
+      )}
       {returns && (
         <InvestmentsGrid returns={filteredReturns} onSelect={handleSelect} />
       )}

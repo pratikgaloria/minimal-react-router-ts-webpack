@@ -1,6 +1,9 @@
 import yahooFinance from "yahoo-finance2";
 import log from "npmlog";
-import { QuoteOptions, QuoteResponseMap } from "yahoo-finance2/dist/esm/src/modules/quote";
+import {
+  QuoteOptions,
+  QuoteResponseMap,
+} from "yahoo-finance2/dist/esm/src/modules/quote";
 import { symbols } from "./symbols";
 
 export class Quotes {
@@ -24,15 +27,16 @@ export class Quotes {
   };
 
   static async fetch() {
-    const yahooSymbols = symbols.data.map((symbol) => symbol.yahoo);
+    const yahooSymbols = symbols.data.map((symbol) => symbol.yahoo).filter(Boolean);
+    log.info("Quotes", `fetching ${yahooSymbols.length} quotes...`);
     return this.get(yahooSymbols);
   }
 
-  static async get(symbols: string[]): Promise<QuoteResponseMap> {
-    return yahooFinance.quote(symbols, {
-      ...this.quoteOptions,
-      return: "map",
-    });
+  static async get(
+    symbols: string[],
+    crypto?: boolean
+  ): Promise<QuoteResponseMap> {
+    return yahooFinance.quote(symbols, { return: "map" });
   }
 
   static async historical(
