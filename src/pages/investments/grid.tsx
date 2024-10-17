@@ -48,6 +48,15 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
         </div>
       ),
     }),
+    columnHelper.accessor("displayName", {
+      header: "",
+      cell: (info) => (
+        <div className={styles.symbol}>
+          <Text>{info.getValue()}</Text>
+        </div>
+      ),
+      enableColumnFilter: false,
+    }),
     columnHelper.accessor("oneDayReturnsPercent", {
       cell: (info) => (
         <span
@@ -82,17 +91,29 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
       enableColumnFilter: false,
     }),
     columnHelper.accessor("investedValue", {
-      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
+      cell: (info) => (
+        <Currency currency={info.row.original.currency}>
+          {info.getValue()}
+        </Currency>
+      ),
       header: "Invested value",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("currentValue", {
-      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
+      cell: (info) => (
+        <Currency currency={info.row.original.currency}>
+          {info.getValue()}
+        </Currency>
+      ),
       header: "Current value",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("totalReturns", {
-      cell: (info) => <Currency currency={info.row.original.currency}>{info.getValue()}</Currency>,
+      cell: (info) => (
+        <Currency currency={info.row.original.currency}>
+          {info.getValue()}
+        </Currency>
+      ),
       header: "Returns",
       enableColumnFilter: false,
     }),

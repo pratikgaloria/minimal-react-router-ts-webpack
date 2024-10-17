@@ -18,6 +18,7 @@ export default function Investments() {
   const [selectedChannel, setChannel] = useState<"trading212" | "india">(
     "trading212"
   );
+  const [selectedType, setSelectedType] = useState<"stock" | "etf">("stock");
   const [selectedSymbol, setSelectedSymbol] = useState<TReturnsSymbol>();
   const { data: returns } = useReturns();
 
@@ -46,6 +47,11 @@ export default function Investments() {
     );
   };
 
+  const filteredReturns =
+    returns?.channels[selectedChannel].symbols.filter(
+      (symbol) => symbol.type === selectedType
+    ) || [];
+
   return (
     <div className={styles.wrapper}>
       <ProfileDrawer
@@ -63,11 +69,17 @@ export default function Investments() {
         selectedItem={selectedChannel}
         onSelect={(id) => setChannel(id as "trading212" | "india")}
       />
+      <Pills
+        items={[
+          { id: "stock", label: "Stock" },
+          { id: "etf", label: "ETF" },
+        ]}
+        size="sm"
+        selectedItem={selectedType}
+        onSelect={(type) => setSelectedType(type as "stock" | "etf")}
+      />
       {returns && (
-        <InvestmentsGrid
-          returns={returns.channels[selectedChannel].symbols}
-          onSelect={handleSelect}
-        />
+        <InvestmentsGrid returns={filteredReturns} onSelect={handleSelect} />
       )}
     </div>
   );

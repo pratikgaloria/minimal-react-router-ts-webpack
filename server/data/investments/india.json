@@ -70,5 +70,143 @@
     "quantity": 760,
     "averagePrice": 35.36,
     "type": "stock"
+  },
+  {
+    "ticker": "MO_ELSSTS_D",
+    "quantity": 6814.176,
+    "averagePrice": 27.0642,
+    "type": "etf"
+  },
+  {
+    "ticker": "SBI_CO_D",
+    "quantity": 24.423,
+    "averagePrice": 204.7148,
+    "type": "etf"
+  },
+  {
+    "ticker": "MA_ELSSTS_D",
+    "quantity": 8183.762,
+    "averagePrice": 29.274,
+    "type": "etf"
+  },
+  {
+    "ticker": "TI_CG_D",
+    "quantity": 4596.674,
+    "averagePrice": 29.3491,
+    "type": "etf"
+  },
+  {
+    "ticker": "TAURUS_TSG_D",
+    "quantity": 1131.193,
+    "averagePrice": 111.7722,
+    "type": "etf"
+  },
+  {
+    "ticker": "ICICI_PBCG_D",
+    "quantity": 317.848,
+    "averagePrice": 15.73,
+    "type": "etf"
+  },
+  {
+    "ticker": "ICICI_PNN50IG_D",
+    "quantity": 2671.566,
+    "averagePrice": 39.0715,
+    "type": "etf"
+  },
+  {
+    "ticker": "ABSL_ETS_D",
+    "quantity": 3530.706,
+    "averagePrice": 39.8431,
+    "type": "etf"
+  },
+  {
+    "ticker": "PP_FCG_D",
+    "quantity": 475.2,
+    "averagePrice": 52.6068,
+    "type": "etf"
+  },
+  {
+    "ticker": "ICICI_PTG_D",
+    "quantity": 485.564,
+    "averagePrice": 165.4277,
+    "type": "etf"
+  },
+  {
+    "ticker": "INVESCO_NSDQ100G_D",
+    "quantity": 3996.395,
+    "averagePrice": 11.2596,
+    "type": "etf"
+  },
+  {
+    "ticker": "MA_GAITG_D",
+    "quantity": 4517.04,
+    "averagePrice": 13.5037,
+    "type": "etf"
+  },
+  {
+    "ticker": "PGIM_GEOG_D",
+    "quantity": 2341.06,
+    "averagePrice": 35.1717,
+    "type": "etf"
+  },
+  {
+    "ticker": "AXIS_BCG_D",
+    "quantity": 2081.517,
+    "averagePrice": 50.8758,
+    "type": "etf"
+  },
+  {
+    "ticker": "NIPPON_USEOG_D",
+    "quantity": 2848.276,
+    "averagePrice": 26.6816,
+    "type": "etf"
+  },
+  {
+    "ticker": "NIPPON_PAIG_D",
+    "quantity": 83.813,
+    "averagePrice": 298.2682,
+    "type": "etf"
+  },
+  {
+    "ticker": "SBI_SCG_D",
+    "quantity": 376.465,
+    "averagePrice": 159.7544,
+    "type": "etf"
+  },
+  {
+    "ticker": "KOTAK_IAERG_D",
+    "quantity": 317.914,
+    "averagePrice": 62.9069,
+    "type": "etf"
+  },
+  {
+    "ticker": "NIPPON_PG_D",
+    "quantity": 55.819,
+    "averagePrice": 447.8538,
+    "type": "etf"
+  },
+  {
+    "ticker": "UTI_BAPSUG_D",
+    "quantity": 2689.988,
+    "averagePrice": 19.33,
+    "type": "etf"
+  },
+  {
+    "ticker": "DSP_WMG_D",
+    "quantity": 3705.021,
+    "averagePrice": 17.0031,
+    "type": "etf"
+  },
+  {
+    "ticker": "HDFC_DG_D",
+    "quantity": 1042.448,
+    "averagePrice": 23.0216,
+    "type": "etf"
+  },
+  {
+    "ticker": "MA_GEAAVG_D",
+    "quantity": 6163.238,
+    "averagePrice": 9.8969,
+    "type": "etf"
   }
 ]

@@ -3,6 +3,7 @@ export type TInvestment = {
   quantity: number;
   averagePrice: number;
   currency: string;
+  type: "stock" | "etf";
   channel: {
     name: string;
     symbol: string;

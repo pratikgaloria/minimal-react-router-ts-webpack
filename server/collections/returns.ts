@@ -3,6 +3,7 @@ import { Investments, TInvestment } from "./investments";
 import { Quotes } from "./quotes";
 
 export type TReturnsSymbol = TInvestment & {
+  displayName: string;
   investedValue: number;
   currentValue: number;
   totalReturns: number;
@@ -56,27 +57,30 @@ export class Returns {
     if (quote.currency === "GBp") {
       quote.currency = "GBP";
       quote.regularMarketPrice = quote.regularMarketPrice! / 1000;
-      quote.regularMarketPreviousClose = quote.regularMarketPreviousClose! / 1000;
+      quote.regularMarketPreviousClose =
+        quote.regularMarketPreviousClose! / 1000;
     }
-  
+
     const conversionRate = await Quotes.getConversion(
       investment.currency,
       quote.currency!
     );
-  
+
     const investedValue = investment.averagePrice * investment.quantity;
     const currentValue =
       (quote.regularMarketPrice! / conversionRate) * investment.quantity;
     const totalReturns = currentValue - investedValue;
     const totalReturnsPercent = (100 * currentValue) / investedValue - 100;
     const previousValue =
-      (quote.regularMarketPreviousClose! / conversionRate) * investment.quantity;
+      (quote.regularMarketPreviousClose! / conversionRate) *
+      investment.quantity;
     const oneDayReturns = currentValue - previousValue;
     const oneDayReturnsPercent = (oneDayReturns * 100) / previousValue;
     const totalFees = investment.channel.fees;
-  
+
     return {
       ...investment,
+      displayName: quote.shortName ?? quote.displayName ?? "",
       investedValue,
       currentValue,
       totalReturns,
@@ -85,5 +89,5 @@ export class Returns {
       oneDayReturnsPercent,
       totalFees,
     };
-  };
+  }
 }

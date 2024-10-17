@@ -1,6 +1,7 @@
 import { TInvestment } from "./investments";
 
 export type TReturnsSymbol = TInvestment & {
+  displayName: string;
   investedValue: number;
   currentValue: number;
   totalReturns: number;

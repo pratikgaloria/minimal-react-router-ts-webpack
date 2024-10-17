@@ -9,6 +9,7 @@ export class Quotes {
     fields: [
       "symbol",
       "currency",
+      "shortName",
       "displayName",
       "market",
       "marketState",

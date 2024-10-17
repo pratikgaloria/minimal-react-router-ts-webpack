@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import styles from "./pills.module.scss";
 import { Text } from "../typography/typography";
 
@@ -11,17 +12,27 @@ type Pill = {
 type PillsProps = {
   items: Pill[];
   selectedItem?: string;
+  size?: "sm" | "md";
   onSelect: (id: string) => void;
 };
 
-export const Pills = ({ items, selectedItem, onSelect }: PillsProps) => {
+export const Pills = ({
+  items,
+  size = "md",
+  selectedItem,
+  onSelect,
+}: PillsProps) => {
   return (
     <div className={styles.pills}>
       {items.map((item) => (
         <button
           key={item.id}
           onClick={() => onSelect(item.id)}
-          className={item.id === selectedItem ? styles.active : ""}
+          className={classnames(
+            styles.pill,
+            styles[`pill-${size}`],
+            selectedItem === item.id ? styles.active : ""
+          )}
         >
           {item.logo && (
             <img
@@ -29,7 +40,7 @@ export const Pills = ({ items, selectedItem, onSelect }: PillsProps) => {
               src={"/public/images/logos/" + item.logo + ".svg"}
             />
           )}
-          <Text size="md">{item.label}</Text>
+          <Text size={size}>{item.label}</Text>
         </button>
       ))}
     </div>
