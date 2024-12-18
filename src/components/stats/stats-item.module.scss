@@ -1,0 +1,35 @@
+@import "../../styles/theme.scss";
+
+.statsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid $color-border;
+  padding: 0 32px;
+
+  .change {
+    color: $color-green;
+  }
+  .change.negative {
+    color: $color-red;
+  }
+
+  .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .symbol {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $color-grey;
+
+      > img {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

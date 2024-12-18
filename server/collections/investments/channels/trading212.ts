@@ -88,6 +88,7 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
 
     let oneDayReturns = 0;
     let totalReturns = 0;
+    let currentValue = 0;
     let otherImpact = 0;
     let pl = 0;
 
@@ -110,12 +111,14 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
       totalReturns += returns.totalReturns * toEUR;
       otherImpact += returns.otherImpact; // always in EUR
       pl += returns.pl; // always in EUR
+      currentValue += returns.currentValue; // always in EUR
       allReturns.push(returns);
     }
 
     return {
       oneDayReturns,
       totalReturns,
+      currentValue,
       otherImpact,
       pl,
       symbols: allReturns,

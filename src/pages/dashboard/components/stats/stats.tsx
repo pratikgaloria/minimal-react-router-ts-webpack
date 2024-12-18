@@ -1,7 +1,7 @@
-import classnames from "classnames";
 import styles from "./stats.module.scss";
 import useReturns from "../../../../api/queries/useReturns";
-import { Text } from "../../../../components/atoms/typography/typography";
+import StatsItem, { StatsItemLoading } from "../../../../components/stats/stats-item";
+import { DashboardState } from "../..";
 
 export type StatsItem = {
   label: string;
@@ -10,24 +10,18 @@ export type StatsItem = {
   logo?: string;
 };
 
-type StatsProps = {};
+type StatsProps = {
+  state: DashboardState;
+};
 
-export default function Stats({}: StatsProps) {
+export default function Stats({ state }: StatsProps) {
   const { isPending, error, data: returns } = useReturns();
 
   if (isPending) {
     return (
       <div className={styles.wrapper}>
         {new Array(4).fill(undefined).map((e, i) => (
-          <div key={i} className={styles.item}>
-            <div className={styles.label}>
-              <Text size="lg" isLoading />
-              <Text isLoading loaderWidth={64} />
-            </div>
-            <div className={styles.value}>
-              <Text size="xl" isLoading loaderWidth={144} />
-            </div>
-          </div>
+          <StatsItemLoading />
         ))}
       </div>
     );
@@ -40,26 +34,26 @@ export default function Stats({}: StatsProps) {
   const items: StatsItem[] = [
     {
       label: "Total",
-      change: returns.oneDayReturns,
-      value: returns.pl,
+      change: state === "today" ? returns.oneDayReturns : returns.pl,
+      value: state === "today" ? returns.pl : returns.currentValue,
       logo: "market-all",
     },
     {
       label: "Global",
-      change: returns.channels["trading212"].oneDayReturns,
-      value: returns.channels["trading212"].pl,
+      change: state === "today" ? returns.channels["trading212"].oneDayReturns : returns.channels["trading212"].pl,
+      value: state === "today" ? returns.channels["trading212"].pl : returns.channels["trading212"].currentValue,
       logo: "market-global",
     },
     {
       label: "India",
-      change: returns.channels["india"].oneDayReturns,
-      value: returns.channels["india"].pl,
+      change: state === "today" ? returns.channels["india"].oneDayReturns : returns.channels["india"].pl,
+      value: state === "today" ? returns.channels["india"].pl : returns.channels["india"].currentValue,
       logo: "market-india",
     },
     {
       label: "Crypto",
-      change: returns.channels["crypto"].oneDayReturns,
-      value: returns.channels["crypto"].pl,
+      change: state === "today" ? returns.channels["crypto"].oneDayReturns : returns.channels["crypto"].pl,
+      value: state === "today" ? returns.channels["crypto"].pl : returns.channels["crypto"].currentValue,
       logo: "market-crypto",
     },
   ];
@@ -67,36 +61,7 @@ export default function Stats({}: StatsProps) {
   return (
     <div className={styles.wrapper}>
       {items.map((item) => (
-        <div key={item.label} className={styles.item}>
-          <div className={styles.label}>
-            <div className={styles.symbol}>
-              <img
-                loading="lazy"
-                src={"/public/images/logos/" + item.logo + ".svg"}
-              />
-              <Text size="lg">{item.label}</Text>
-            </div>
-            <Text
-              className={classnames(styles.change, {
-                [styles.negative]: item.change < 0,
-              })}
-            >
-              {item.change > 0 ? "+" : ""}
-              {Intl.NumberFormat("de-DE", {
-                style: "currency",
-                currency: "EUR",
-              }).format(item.change)}
-            </Text>
-          </div>
-          <div className={styles.value}>
-            <Text size="xl">
-              {Intl.NumberFormat("de-DE", {
-                style: "currency",
-                currency: "EUR",
-              }).format(item.value)}
-            </Text>
-          </div>
-        </div>
+        <StatsItem {...item} />
       ))}
     </div>
   );

@@ -50,6 +50,7 @@ export class ChannelCrypto extends Channel<CryptoPosition> {
 
     let oneDayReturns = 0;
     let totalReturns = 0;
+    let currentValue = 0;
     let otherImpact = 0;
     let pl = 0;
 
@@ -70,6 +71,7 @@ export class ChannelCrypto extends Channel<CryptoPosition> {
       const toEUR = await Quotes.getConversion(investment.currency, "EUR");
       oneDayReturns += returns.oneDayReturns * toEUR;
       totalReturns += returns.totalReturns * toEUR;
+      currentValue += returns.currentValue * toEUR;
       otherImpact += returns.otherImpact * toEUR;
       pl += returns.pl * toEUR;
       allReturns.push(returns);
@@ -78,6 +80,7 @@ export class ChannelCrypto extends Channel<CryptoPosition> {
     return {
       oneDayReturns,
       totalReturns,
+      currentValue,
       otherImpact,
       pl,
       symbols: allReturns,

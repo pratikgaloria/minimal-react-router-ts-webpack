@@ -17,6 +17,7 @@ export type TReturnsSymbol = TInvestment & {
 export type TReturnsChannel = {
   oneDayReturns: number;
   totalReturns: number;
+  currentValue: number;
   otherImpact: number;
   pl: number;
   symbols: TReturnsSymbol[];
@@ -27,6 +28,7 @@ export type TReturnsChannels = Record<string, TReturnsChannel>;
 export type TReturns = {
   oneDayReturns: number;
   totalReturns: number;
+  currentValue: number;
   otherImpact: number;
   pl: number;
   channels: TReturnsChannels;
@@ -36,6 +38,7 @@ export class Returns {
   static async get(): Promise<TReturns> {
     let oneDayReturns = 0;
     let totalReturns = 0;
+    let currentValue = 0;
     let otherImpact = 0;
     let pl = 0;
     const channels = await Investments.getReturns();
@@ -43,6 +46,7 @@ export class Returns {
     Object.values(channels).forEach((channel) => {
       oneDayReturns += channel.oneDayReturns;
       totalReturns += channel.totalReturns;
+      currentValue += channel.currentValue;
       otherImpact += channel.otherImpact;
       pl += channel.pl;
     });
@@ -50,6 +54,7 @@ export class Returns {
     return {
       oneDayReturns,
       totalReturns,
+      currentValue,
       otherImpact,
       pl,
       channels,
@@ -72,9 +77,10 @@ export class Returns {
       quote.currency!
     );
 
+    const otherImpact = investment.channel.fxImpact;
     const investedValue = investment.averagePrice * investment.quantity;
     const currentValue =
-      (quote.regularMarketPrice! / conversionRate) * investment.quantity;
+    (quote.regularMarketPrice! / conversionRate) * investment.quantity;
     const totalReturns = currentValue - investedValue;
     const totalReturnsPercent = (100 * currentValue) / investedValue - 100;
     const previousValue =
@@ -82,7 +88,6 @@ export class Returns {
       investment.quantity;
     const oneDayReturns = currentValue - previousValue;
     const oneDayReturnsPercent = (oneDayReturns * 100) / previousValue;
-    const otherImpact = investment.channel.fxImpact;
     const pl = totalReturns + otherImpact;
 
     return {

@@ -15,6 +15,7 @@ export type TReturnsSymbol = TInvestment & {
 export type TReturnsChannel = {
   oneDayReturns: number;
   totalReturns: number;
+  currentValue: number;
   otherImpact: number;
   pl: number;
   symbols: TReturnsSymbol[];
@@ -25,6 +26,7 @@ export type TReturnsChannels = Record<string, TReturnsChannel>;
 export type TReturns = {
   oneDayReturns: number;
   totalReturns: number;
+  currentValue: number;
   otherImpact: number;
   pl: number;
   channels: TReturnsChannels;
