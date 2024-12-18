@@ -31,8 +31,8 @@
   },
   {
     "ticker": "XRP",
-    "quantity": 200,
-    "averagePrice": 0.6199,
+    "quantity": 300.1,
+    "averagePrice": 1.2666,
     "type": "crypto"
   },
   {
@@ -43,8 +43,8 @@
   },
   {
     "ticker": "ADA",
-    "quantity": 200,
-    "averagePrice": 1.2232,
+    "quantity": 200.13,
+    "averagePrice": 1.2224,
     "type": "crypto"
   },
   {
@@ -91,8 +91,8 @@
   },
   {
     "ticker": "XLM",
-    "quantity": 100,
-    "averagePrice": 0.2782,
+    "quantity": 400.35,
+    "averagePrice": 0.4459,
     "type": "crypto"
   },
   {

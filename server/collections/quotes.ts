@@ -27,7 +27,9 @@ export class Quotes {
   };
 
   static async fetch() {
-    const yahooSymbols = symbols.data.map((symbol) => symbol.yahoo).filter(Boolean);
+    const yahooSymbols = symbols.data
+      .map((symbol) => symbol.yahoo)
+      .filter(Boolean);
     log.info("Quotes", `fetching ${yahooSymbols.length} quotes...`);
     return this.get(yahooSymbols);
   }
@@ -36,7 +38,11 @@ export class Quotes {
     symbols: string[],
     crypto?: boolean
   ): Promise<QuoteResponseMap> {
-    return yahooFinance.quote(symbols, { return: "map" });
+    return yahooFinance.quote(
+      symbols,
+      { return: "map" },
+      { validateResult: false }
+    );
   }
 
   static async historical(

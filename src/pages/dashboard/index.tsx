@@ -1,6 +1,6 @@
 import { Button } from "../../components/atoms/button/button";
 import { Header } from "../../components/header/header";
-import Stats from "../../components/stats/stats";
+import Stats from "./components/stats/stats";
 import TopLists from "./components/top-lists/top-lists";
 import styles from "./dashboard.module.scss";
 

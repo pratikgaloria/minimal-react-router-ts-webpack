@@ -1,7 +1,7 @@
 import classnames from "classnames";
-import { Text } from "../atoms/typography/typography";
 import styles from "./stats.module.scss";
-import useReturns from "../../api/queries/useReturns";
+import useReturns from "../../../../api/queries/useReturns";
+import { Text } from "../../../../components/atoms/typography/typography";
 
 export type StatsItem = {
   label: string;
@@ -41,25 +41,25 @@ export default function Stats({}: StatsProps) {
     {
       label: "Total",
       change: returns.oneDayReturns,
-      value: returns.totalReturns,
+      value: returns.pl,
       logo: "market-all",
     },
     {
       label: "Global",
       change: returns.channels["trading212"].oneDayReturns,
-      value: returns.channels["trading212"].totalReturns,
+      value: returns.channels["trading212"].pl,
       logo: "market-global",
     },
     {
       label: "India",
       change: returns.channels["india"].oneDayReturns,
-      value: returns.channels["india"].totalReturns,
+      value: returns.channels["india"].pl,
       logo: "market-india",
     },
     {
       label: "Crypto",
       change: returns.channels["crypto"].oneDayReturns,
-      value: returns.channels["crypto"].totalReturns,
+      value: returns.channels["crypto"].pl,
       logo: "market-crypto",
     },
   ];

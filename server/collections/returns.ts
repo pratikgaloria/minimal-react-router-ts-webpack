@@ -10,13 +10,15 @@ export type TReturnsSymbol = TInvestment & {
   totalReturnsPercent: number;
   oneDayReturns: number;
   oneDayReturnsPercent: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
 };
 
 export type TReturnsChannel = {
   oneDayReturns: number;
   totalReturns: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
   symbols: TReturnsSymbol[];
 };
 
@@ -25,7 +27,8 @@ export type TReturnsChannels = Record<string, TReturnsChannel>;
 export type TReturns = {
   oneDayReturns: number;
   totalReturns: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
   channels: TReturnsChannels;
 };
 
@@ -33,19 +36,22 @@ export class Returns {
   static async get(): Promise<TReturns> {
     let oneDayReturns = 0;
     let totalReturns = 0;
-    let totalFees = 0;
+    let otherImpact = 0;
+    let pl = 0;
     const channels = await Investments.getReturns();
 
     Object.values(channels).forEach((channel) => {
       oneDayReturns += channel.oneDayReturns;
       totalReturns += channel.totalReturns;
-      totalFees += channel.totalFees;
+      otherImpact += channel.otherImpact;
+      pl += channel.pl;
     });
 
     return {
       oneDayReturns,
       totalReturns,
-      totalFees,
+      otherImpact,
+      pl,
       channels,
     };
   }
@@ -76,7 +82,8 @@ export class Returns {
       investment.quantity;
     const oneDayReturns = currentValue - previousValue;
     const oneDayReturnsPercent = (oneDayReturns * 100) / previousValue;
-    const totalFees = investment.channel.fees;
+    const otherImpact = investment.channel.fxImpact;
+    const pl = totalReturns + otherImpact;
 
     return {
       ...investment,
@@ -87,7 +94,8 @@ export class Returns {
       totalReturnsPercent,
       oneDayReturns,
       oneDayReturnsPercent,
-      totalFees,
+      otherImpact,
+      pl,
     };
   }
 }

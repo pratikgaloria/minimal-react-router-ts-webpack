@@ -50,7 +50,8 @@ export class ChannelIndia extends Channel<IndiaPosition> {
 
     let oneDayReturns = 0;
     let totalReturns = 0;
-    let totalFees = 0;
+    let otherImpact = 0;
+    let pl = 0;
 
     for (const investment of investments) {
       const yahooSymbol = investment.symbols.yahoo;
@@ -69,14 +70,16 @@ export class ChannelIndia extends Channel<IndiaPosition> {
       const toEUR = await Quotes.getConversion(investment.currency, "EUR");
       oneDayReturns += returns.oneDayReturns * toEUR;
       totalReturns += returns.totalReturns * toEUR;
-      totalFees += returns.totalFees;
+      otherImpact += returns.otherImpact * toEUR;
+      pl += returns.pl * toEUR;
       allReturns.push(returns);
     }
 
     return {
       oneDayReturns,
       totalReturns,
-      totalFees,
+      otherImpact,
+      pl,
       symbols: allReturns,
     };
   }
@@ -93,7 +96,7 @@ export class ChannelIndia extends Channel<IndiaPosition> {
       channel: {
         name: this.name,
         symbol: position.ticker,
-        fees: 0,
+        fxImpact: 0,
       },
       symbols: {
         yahoo: symbol?.yahoo ?? "",

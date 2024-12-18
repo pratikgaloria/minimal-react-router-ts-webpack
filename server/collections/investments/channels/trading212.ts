@@ -88,7 +88,8 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
 
     let oneDayReturns = 0;
     let totalReturns = 0;
-    let totalFees = 0;
+    let otherImpact = 0;
+    let pl = 0;
 
     for (const investment of investments) {
       const yahooSymbol = investment.symbols.yahoo;
@@ -107,14 +108,16 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
       const toEUR = await Quotes.getConversion(investment.currency, "EUR");
       oneDayReturns += returns.oneDayReturns * toEUR;
       totalReturns += returns.totalReturns * toEUR;
-      totalFees += returns.totalFees;
+      otherImpact += returns.otherImpact; // always in EUR
+      pl += returns.pl; // always in EUR
       allReturns.push(returns);
     }
 
     return {
       oneDayReturns,
       totalReturns,
-      totalFees,
+      otherImpact,
+      pl,
       symbols: allReturns,
     };
   }
@@ -133,7 +136,7 @@ export class ChannelTrading212 extends Channel<Trading212PortfolioPosition> {
       channel: {
         name: this.name,
         symbol: position.ticker,
-        fees: position.fxPpl,
+        fxImpact: position.fxPpl,
       },
       symbols: {
         yahoo: symbol?.yahoo ?? "",

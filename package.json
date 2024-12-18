@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve",
-    "server": "ts-node ./server/index.ts"
+    "server": "ts-node ./server/index.ts",
+    "yahoo": "ts-node ./yahoo.ts"
   },
   "keywords": [],
   "author": "",

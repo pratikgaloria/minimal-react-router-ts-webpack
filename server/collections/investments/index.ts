@@ -17,7 +17,7 @@ export type TInvestment = {
   channel: {
     name: string;
     symbol: string;
-    fees: number;
+    fxImpact: number;
   };
   symbols: {
     yahoo: string;

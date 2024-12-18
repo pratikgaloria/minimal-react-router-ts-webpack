@@ -73,8 +73,8 @@
   },
   {
     "ticker": "MO_ELSSTS_D",
-    "quantity": 6814.176,
-    "averagePrice": 27.0642,
+    "quantity": 6962.993,
+    "averagePrice": 27.7782,
     "type": "etf"
   },
   {
@@ -85,20 +85,20 @@
   },
   {
     "ticker": "MA_ELSSTS_D",
-    "quantity": 8183.762,
-    "averagePrice": 29.274,
+    "quantity": 8373.905,
+    "averagePrice": 29.8034,
     "type": "etf"
   },
   {
     "ticker": "TI_CG_D",
-    "quantity": 4596.674,
-    "averagePrice": 29.3491,
+    "quantity": 4666.991,
+    "averagePrice": 29.6568,
     "type": "etf"
   },
   {
     "ticker": "TAURUS_TSG_D",
-    "quantity": 1131.193,
-    "averagePrice": 111.7722,
+    "quantity": 1141.139,
+    "averagePrice": 112.5506,
     "type": "etf"
   },
   {
@@ -109,14 +109,14 @@
   },
   {
     "ticker": "ICICI_PNN50IG_D",
-    "quantity": 2671.566,
-    "averagePrice": 39.0715,
+    "quantity": 2719.673,
+    "averagePrice": 39.4834,
     "type": "etf"
   },
   {
     "ticker": "ABSL_ETS_D",
-    "quantity": 3530.706,
-    "averagePrice": 39.8431,
+    "quantity": 3592.335,
+    "averagePrice": 40.2730,
     "type": "etf"
   },
   {
@@ -127,8 +127,8 @@
   },
   {
     "ticker": "ICICI_PTG_D",
-    "quantity": 485.564,
-    "averagePrice": 165.4277,
+    "quantity": 494.198,
+    "averagePrice": 166.5843,
     "type": "etf"
   },
   {
@@ -145,20 +145,20 @@
   },
   {
     "ticker": "PGIM_GEOG_D",
-    "quantity": 2341.06,
-    "averagePrice": 35.1717,
+    "quantity": 2381.849,
+    "averagePrice": 35.4090,
     "type": "etf"
   },
   {
     "ticker": "AXIS_BCG_D",
-    "quantity": 2081.517,
-    "averagePrice": 50.8758,
+    "quantity": 2126.507,
+    "averagePrice": 51.2102,
     "type": "etf"
   },
   {
     "ticker": "NIPPON_USEOG_D",
-    "quantity": 2848.276,
-    "averagePrice": 26.6816,
+    "quantity": 2927.824,
+    "averagePrice": 26.9813,
     "type": "etf"
   },
   {
@@ -169,14 +169,14 @@
   },
   {
     "ticker": "SBI_SCG_D",
-    "quantity": 376.465,
-    "averagePrice": 159.7544,
+    "quantity": 391.88,
+    "averagePrice": 161.1253,
     "type": "etf"
   },
   {
     "ticker": "KOTAK_IAERG_D",
-    "quantity": 317.914,
-    "averagePrice": 62.9069,
+    "quantity": 381.715,
+    "averagePrice": 65.4906,
     "type": "etf"
   },
   {
@@ -187,20 +187,20 @@
   },
   {
     "ticker": "UTI_BAPSUG_D",
-    "quantity": 2689.988,
-    "averagePrice": 19.33,
+    "quantity": 2879.409,
+    "averagePrice": 19.4475,
     "type": "etf"
   },
   {
     "ticker": "DSP_WMG_D",
-    "quantity": 3705.021,
-    "averagePrice": 17.0031,
+    "quantity": 3879.116,
+    "averagePrice": 17.0133,
     "type": "etf"
   },
   {
     "ticker": "HDFC_DG_D",
-    "quantity": 1042.448,
-    "averagePrice": 23.0216,
+    "quantity": 1772.317,
+    "averagePrice": 22.5682,
     "type": "etf"
   },
   {

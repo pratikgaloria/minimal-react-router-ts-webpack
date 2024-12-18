@@ -8,13 +8,15 @@ export type TReturnsSymbol = TInvestment & {
   totalReturnsPercent: number;
   oneDayReturns: number;
   oneDayReturnsPercent: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
 };
 
 export type TReturnsChannel = {
   oneDayReturns: number;
   totalReturns: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
   symbols: TReturnsSymbol[];
 };
 
@@ -23,6 +25,7 @@ export type TReturnsChannels = Record<string, TReturnsChannel>;
 export type TReturns = {
   oneDayReturns: number;
   totalReturns: number;
-  totalFees: number;
+  otherImpact: number;
+  pl: number;
   channels: TReturnsChannels;
 };
