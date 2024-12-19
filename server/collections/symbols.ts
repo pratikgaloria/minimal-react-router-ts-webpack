@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export type SymbolChannel = "yahoo" | "trading212" | "tradingView" | "india" | "crypto";
+export type SymbolChannel = "yahoo" | "trading212" | "tradingView" | "india" | "kuvera" | "crypto";
 
 type TSymbol = {
   yahoo: string;
@@ -8,6 +8,7 @@ type TSymbol = {
   tradingView?: string;
   india?: string;
   crypto?: string;
+  kuvera?: string;
 };
 
 class Symbols {

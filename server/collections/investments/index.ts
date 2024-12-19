@@ -4,6 +4,7 @@ import { Channel } from "./channels";
 import { channelTrading212 as trading212 } from "./channels/trading212";
 import { channelIndia as india } from "./channels/india";
 import { channelCrypto as crypto } from "./channels/crypto";
+import { channelKuvera as kuvera } from "./channels/kuvera";
 import { TReturnsChannel } from "../returns";
 
 export type TInvestmentType = "stock" | "etf" | "crypto";
@@ -26,7 +27,7 @@ export type TInvestment = {
 };
 
 export class Investments {
-  static channels: Channel<unknown>[] = [trading212, india, crypto];
+  static channels: Channel<unknown>[] = [trading212, india, kuvera, crypto];
 
   static async fetch() {
     await Promise.all(

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TReturnsSymbol } from "../../api/models/returns";
 import { Pills } from "../../components/atoms/pills/pills";
 import { Header } from "../../components/header/header";
@@ -16,7 +16,7 @@ const enum Flow {
 export default function Investments() {
   const [flow, setFlow] = useState<Flow>(Flow.Idle);
   const [selectedChannel, setChannel] = useState<
-    "trading212" | "india" | "crypto"
+    "trading212" | "india" | "kuvera" | "crypto"
   >("trading212");
   const [selectedType, setSelectedType] = useState<"stock" | "etf" | "crypto">(
     "stock"
@@ -67,6 +67,7 @@ export default function Investments() {
         items={[
           { id: "trading212", label: "Global", logo: "market-global" },
           { id: "india", label: "India", logo: "market-india" },
+          { id: "kuvera", label: "India ETF", logo: "market-india" },
           { id: "crypto", label: "Crypto", logo: "market-crypto" },
         ]}
         selectedItem={selectedChannel}
@@ -74,12 +75,14 @@ export default function Investments() {
           setChannel(id as "trading212" | "india");
           if (id === "crypto") {
             setSelectedType("crypto");
+          } else if (id === "kuvera") {
+            setSelectedType("etf");
           } else {
             setSelectedType("stock");
           }
         }}
       />
-      {selectedChannel !== "crypto" && (
+      {selectedChannel === "trading212" && (
         <Pills
           items={[
             { id: "stock", label: "Stock" },
