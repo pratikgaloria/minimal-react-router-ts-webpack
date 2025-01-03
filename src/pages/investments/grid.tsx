@@ -17,6 +17,7 @@ import { Icon } from "../../components/icons/icon";
 import { Button } from "../../components/atoms/button/button";
 import { SearchBar } from "../../components/forms/search-bar";
 import { TReturnsSymbol } from "../../api/models/returns";
+import { ValueBars } from "./components/value-bars";
 
 const columnHelper = createColumnHelper<TReturnsSymbol>();
 
@@ -67,7 +68,7 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
           {info.getValue().toFixed(1) + "%"}
         </span>
       ),
-      header: "Today",
+      header: "Today %",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("oneDayReturns", {
@@ -82,21 +83,12 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
           </Currency>
         </span>
       ),
-      header: "",
+      header: "P/L",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("quantity", {
       cell: (info) => info.getValue().toFixed(1),
       header: "Qty.",
-      enableColumnFilter: false,
-    }),
-    columnHelper.accessor("investedValue", {
-      cell: (info) => (
-        <Currency currency={info.row.original.currency}>
-          {info.getValue()}
-        </Currency>
-      ),
-      header: "Invested value",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("currentValue", {
@@ -114,12 +106,19 @@ export function InvestmentsGrid({ returns, onSelect }: InvestmentGridProps) {
           {info.getValue()}
         </Currency>
       ),
-      header: "Returns",
+      header: "P/L",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("totalReturnsPercent", {
       cell: (info) => info.getValue().toFixed(0) + "%",
-      header: "P/L",
+      header: "%",
+      enableColumnFilter: false,
+    }),
+    columnHelper.accessor("totalReturnsPercent", {
+      cell: (info) => (
+        <ValueBars returns={info.row.original.totalReturnsPercent} />
+      ),
+      header: "",
       enableColumnFilter: false,
     }),
     columnHelper.accessor("id", {

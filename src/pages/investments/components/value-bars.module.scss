@@ -1,0 +1,21 @@
+@import '../../../styles/theme.scss';
+
+.valueBars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+  .bar {
+    height: 2px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .returnsBar {
+    border-color: $color-green;
+  }
+
+  .returnsBar.negative {
+    border-color: $color-red;
+  }
+}
